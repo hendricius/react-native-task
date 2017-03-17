@@ -16,7 +16,7 @@ import {
   Body,
   Icon
 } from "native-base";
-import Cards from './Components/Cards';
+import Cards from './src/Components/Cards';
 
 export default class App extends Component {
   render() {
