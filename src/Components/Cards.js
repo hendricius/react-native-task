@@ -18,13 +18,15 @@ import {
 } from "native-base";
 import withPostsHoC from '../utils/withPosts';
 
-const renderItem = ({ image, text, score, created }) => (
+const renderItem = ({ image, text, score, created }) => ( 
   <Card style={{ 
     elevation: 3,
   }}>
     <CardItem>
       <Left>
-          <Thumbnail source={{uri: image}} />
+          {/*author image available somewhere?*/}
+          {/*<Thumbnail source={{uri: image}} />*/}
+          <Thumbnail source={{uri: "https://images-na.ssl-images-amazon.com/images/I/512svZc6D5L._AC_UL320_SR318,320_.jpg"}} />
       </Left>
       <Body>
         <Text note>author:</Text>
@@ -52,15 +54,16 @@ const renderItem = ({ image, text, score, created }) => (
   </Card>
 );
 
-const Cards = ({ data }) => {
+const Cards = ({ data, ...props }) => {
+  const { downvote, upvote } = props.callbacks;
   return (
     <View>
       {data.length === 0 
         ? <View><Text>Loading...</Text></View>
         : <DeckSwiper
             dataSource={data}
-            onSwipeLeft={() => alert('slide left > sweeet')}
-            onSwipeRight={() => alert('slide right > declined')}
+            onSwipeLeft={upvote}
+            onSwipeRight={downvote}
             renderItem={renderItem}
           />
       }

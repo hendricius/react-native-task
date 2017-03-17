@@ -20,6 +20,41 @@ import Footer from './src/Components/Footer';
 
 
 export default class App extends Component {
+
+  constructor() {
+    super();
+    this.upvote = this.upvote.bind(this);
+    this.downvote = this.downvote.bind(this);
+  }
+
+  state = {
+    votes: {
+      upvoted: [],
+      downvoted: [],
+    }
+  };
+
+  // defini upvote fn to be passed as callbacks
+  upvote(subreddit) {
+    console.log('upvoted');
+    this.setState({
+      votes: {
+        upvodted: 'subreddit',
+      }
+    })
+  }
+
+  // define downvote fn to be passed as callbacks
+  downvote(subreddit) {
+    console.log('downvoted');
+    this.setState({
+      votes: {
+        downvoted: 'subreddit',
+      }
+    });
+  }
+
+
   render() {
     return (
       <View style={{
@@ -38,7 +73,11 @@ export default class App extends Component {
           </Body>
           <Right />
         </Header>
-        <Cards />
+        <Cards callbacks={{ 
+            upvote: this.upvote, 
+            downvote: this.downvote,
+          }}
+        />
         <Footer />
       </View>
     );
