@@ -27,8 +27,8 @@ const renderItem = item => (
           <Thumbnail source={{uri: item.image}} />
       </Left>
       <Body>
+        <Text note>author:</Text>
           <Text>{item.text}</Text>
-          <Text note>NativeBase</Text>
       </Body>
     </CardItem>
     <CardItem cardBody>
@@ -44,7 +44,7 @@ const renderItem = item => (
     </CardItem>
     <CardItem>
       <Icon name="heart" style={{ color: '#ED4A6A' }} />
-      <Text>{item.name}</Text>
+      <Text>{item.score}</Text>
     </CardItem>
   </Card>
 );

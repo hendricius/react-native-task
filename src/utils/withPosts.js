@@ -20,8 +20,8 @@ const withPosts = (reqUrl) => (Component) => {
             return [
               ...obj,
               { 
-                 text: item.id,
-                 name: item.name,
+                 text: item.author,
+                 score: item.score,
                  image: item.thumbnail,
               }
             ];
