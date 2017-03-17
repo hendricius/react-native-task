@@ -54,7 +54,10 @@ const renderItem = ({ image, text, score, created }) => (
   </Card>
 );
 
+// note: Cards component will be wrapped in withPosts HoC
+// all props will be passed through from withPosts HoC
 const Cards = ({ data, ...props }) => {
+  // destruct callbacks from root component holding state
   const { downvote, upvote } = props.callbacks;
   return (
     <View>

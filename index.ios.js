@@ -27,10 +27,17 @@ export default class App extends Component {
     this.downvote = this.downvote.bind(this);
   }
 
+  // set up application state to track up- and downvotes for view2
   state = {
     votes: {
       upvoted: [],
       downvoted: [],
+    },
+    // set up state based own navigation between Views 1 and 2
+    router: {
+      screens: [ 'Listing', 'MyVotes' ],
+      initial: 'Listing',
+      active: null,
     }
   };
 
@@ -41,7 +48,7 @@ export default class App extends Component {
       votes: {
         upvodted: 'subreddit',
       }
-    })
+    });
   }
 
   // define downvote fn to be passed as callbacks
@@ -53,7 +60,6 @@ export default class App extends Component {
       }
     });
   }
-
 
   render() {
     return (

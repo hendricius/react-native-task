@@ -2,8 +2,7 @@ import React, { Component as C } from 'react';
 import axios from 'axios';
 
 const withPosts = (reqUrl) => (Component) => {
-  return class extends C {
-    
+  return class extends C {  
     constructor() {
       super();
 
