@@ -19,3 +19,9 @@ show a small preview of the image, as well as whether the user upvoted/downvoted
 
 It would be nice to have a menu or something similar to switch between View 1 and View 2.
 
+# Installation of contributed solution
+
+1. Make sure React-Native CLI with minor version 2.0.0 is installed on your machine. If not, [follow the installation instructions](https://www.npmjs.com/package/react-native-cli).
+2. run ```npm install``` or ```yarn install``` to install all project dependencies
+3. run ```react-native link``` to install all peer dependencies
+4. after you checked a proper installation of Xcode (version > 8.0.0), run ```react-native run-ios``` to start the application in your emulator.
