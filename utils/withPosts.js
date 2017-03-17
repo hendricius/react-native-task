@@ -1,0 +1,46 @@
+import React, { Component as C } from 'react';
+import axios from 'axios';
+
+const withPosts = (reqUrl) => (Component) => {
+  return class extends C {
+    
+    constructor() {
+      super();
+
+      this.state = {
+        data: []
+      }
+    };
+
+    componentDidMount() {
+      axios.get(reqUrl)
+        .then(response => response.data.data.children)
+        .then(data => {
+          const cardsData = data.reduce((obj, { data: item }) => {
+            return [
+              ...obj,
+              { 
+                 text: item.id,
+                 name: item.name,
+                 image: item.thumbnail,
+              }
+            ];
+          }, []);
+          this.setState({ data: cardsData })
+        })
+    }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //   return this.state.data != nextState.data;
+    // };
+
+    render() {
+      const { data } = this.state;
+      return (
+        <Component data={data} />
+      )
+    }
+  }
+};
+
+export default withPosts;
