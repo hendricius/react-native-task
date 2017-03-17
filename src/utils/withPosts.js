@@ -12,17 +12,27 @@ const withPosts = (reqUrl) => (Component) => {
       }
     };
 
+    convertTimestampToDate(timestamp) {
+      const date = new Date (timestamp * 1000);
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+      return `${hours}:${minutes}:${seconds}`;
+    }
+
     componentDidMount() {
       axios.get(reqUrl)
         .then(response => response.data.data.children)
         .then(data => {
-          const cardsData = data.reduce((obj, { data: item }) => {
+          const cardsData = data.reduce(
+            (obj, { data: { author, score, thumbnail, created } }) => {
             return [
               ...obj,
               { 
-                 text: item.author,
-                 score: item.score,
-                 image: item.thumbnail,
+                 score,
+                 text: author,
+                 image: thumbnail,
+                 created: this.convertTimestampToDate(created),
               }
             ];
           }, []);

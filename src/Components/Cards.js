@@ -18,17 +18,17 @@ import {
 } from "native-base";
 import withPostsHoC from '../utils/withPosts';
 
-const renderItem = item => (
+const renderItem = ({ image, text, score, created }) => (
   <Card style={{ 
     elevation: 3,
   }}>
     <CardItem>
       <Left>
-          <Thumbnail source={{uri: item.image}} />
+          <Thumbnail source={{uri: image}} />
       </Left>
       <Body>
         <Text note>author:</Text>
-          <Text>{item.text}</Text>
+          <Text>{text}</Text>
       </Body>
     </CardItem>
     <CardItem cardBody>
@@ -39,12 +39,15 @@ const renderItem = item => (
             flex: 1,
             height: 300
           }} 
-          source={{uri: item.image}}
+          source={{uri: image}}
         />
     </CardItem>
     <CardItem>
       <Icon name="heart" style={{ color: '#ED4A6A' }} />
-      <Text>{item.score}</Text>
+      <Text>{score}</Text>
+      <Right>
+        <Text>Recent?: {created}</Text>
+      </Right>
     </CardItem>
   </Card>
 );
@@ -65,5 +68,5 @@ const Cards = ({ data }) => {
   );
 }
 
-const redditApi = "https://www.reddit.com/r/aww.json";
+const redditApi = "https://www.reddit.com/r/aww/new.json";
 export default withPostsHoC(redditApi)(Cards);
