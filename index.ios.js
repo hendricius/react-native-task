@@ -8,8 +8,6 @@ import {
   Header,
   DeckSwiper,
   Title,
-  Footer,
-  FooterTab,
   Button,
   Left,
   Right,
@@ -17,11 +15,18 @@ import {
   Icon
 } from "native-base";
 import Cards from './src/Components/Cards';
+import Footer from './src/Components/Footer';
+
+
 
 export default class App extends Component {
   render() {
     return (
-      <Container>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+      }}>
         <Header>
           <Left>
             <Button transparent>
@@ -34,7 +39,8 @@ export default class App extends Component {
           <Right />
         </Header>
         <Cards />
-      </Container>
+        <Footer />
+      </View>
     );
   }
 };

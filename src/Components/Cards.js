@@ -19,7 +19,9 @@ import {
 import withPostsHoC from '../utils/withPosts';
 
 const renderItem = item => (
-  <Card style={{ elevation: 3 }}>
+  <Card style={{ 
+    elevation: 3,
+  }}>
     <CardItem>
       <Left>
           <Thumbnail source={{uri: item.image}} />
@@ -50,16 +52,16 @@ const renderItem = item => (
 const Cards = ({ data }) => {
   return (
     <View>
-        {data.length === 0 
-          ? <View><Text>Loading...</Text></View>
-          : <DeckSwiper
-              dataSource={data}
-              onSwipeLeft={() => alert('slide left > sweeet')}
-              onSwipeRight={() => alert('slide right > declined')}
-              renderItem={renderItem}
-            />
-          }
-      </View>
+      {data.length === 0 
+        ? <View><Text>Loading...</Text></View>
+        : <DeckSwiper
+            dataSource={data}
+            onSwipeLeft={() => alert('slide left > sweeet')}
+            onSwipeRight={() => alert('slide right > declined')}
+            renderItem={renderItem}
+          />
+      }
+    </View>
   );
 }
 

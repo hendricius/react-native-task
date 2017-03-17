@@ -36,8 +36,9 @@ const withPosts = (reqUrl) => (Component) => {
 
     render() {
       const { data } = this.state;
+      console.log('her', this.props);
       return (
-        <Component data={data} />
+        <Component data={data} {...this.props} />
       )
     }
   }
