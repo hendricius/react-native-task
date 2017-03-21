@@ -10,6 +10,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import {login} from '../actions'
+
 class Login extends Component{
   constructor(props){
     super(props)
@@ -22,6 +24,7 @@ class Login extends Component{
     console.log('onLogin');
     if(this.state.username.value !=='' && this.state.password.value.toLowerCase() ==='password'){
       console.log('llama al dispatch');
+      this.props.dispatch(login(this.state.username.value))
     }else{
       this.onCheckInput()
     }
@@ -144,4 +147,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Login
+export default connect()(Login)

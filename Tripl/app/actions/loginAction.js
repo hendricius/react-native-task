@@ -1,7 +1,6 @@
-exports.loginAction = (username) => {
-  console.log('loginAction',username);
-  return(
+exports.login = (username) => {
+  return{
     type:'LOG_IN',
     username
-  )
+  }
 }

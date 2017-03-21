@@ -10,20 +10,34 @@ import {
 } from 'react-native';
 
 import Login from './Login'
-
+import NavigatorApp from './NavigatorApp'
 class App extends Component{
-  onLogIn(){
-    console.log('onLogIn');
+  renderMainView(){
+    if(this.props.user){
+      console.log('navigator');
+      return(
+        <NavigatorApp/>
+      )
+    } else {
+      console.log('login');
+      return(
+        <Login/>
+      )
+    }
   }
   render(){
     return(
-      <Login/>
+      <View style={{flex:1}}>
+        {this.renderMainView()}
+      </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-});
+var mapStateToProps = (state) => {
+  return {
+    user:state.logIn.user
+  }
+}
 
-
-export default App
+export default connect(mapStateToProps)(App)
