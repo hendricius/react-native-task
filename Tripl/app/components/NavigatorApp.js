@@ -7,12 +7,15 @@ import {
 } from 'react-native';
 
 import Main from './Main.js'
+import SecondView from './SecondView.js'
 
 class NavigatorApp extends Component {
   renderScene(route, nav){
     switch (route.id) {
       case 'Main':
         return <Main navigator={nav}/>
+      case 'SecondView':
+        return <SecondView navigator={nav}/>
     }
   }
   render(){
@@ -20,7 +23,7 @@ class NavigatorApp extends Component {
       <Navigator
         initialRoute={{id:'Main'}}
         configureScene={(route)=>{
-          return Navigator.SceneConfigs.FloatFromRight
+          return Navigator.SceneConfigs.PushFromRight
         }}
         renderScene={(route, navigator)=>
           {return this.renderScene(route, navigator)}
