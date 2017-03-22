@@ -15,7 +15,7 @@ class NavigatorApp extends Component {
       case 'Main':
         return <Main navigator={nav}/>
       case 'SecondView':
-        return <SecondView navigator={nav}/>
+        return <SecondView navigator={nav} elements={route.elements}/>
     }
   }
   render(){

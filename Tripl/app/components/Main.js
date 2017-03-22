@@ -34,7 +34,7 @@ class Main extends Component {
     data.approved = false
   }
   goToSecondView(){
-    this.props.navigator.push({id:'SecondView'})
+    this.props.navigator.push({id:'SecondView', elements:this.state.cards})
   }
   render(){
     return (
