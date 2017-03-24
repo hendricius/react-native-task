@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
   card: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth:2,
-    borderColor:'black'
   },
   thumbnail:{
     width:200,

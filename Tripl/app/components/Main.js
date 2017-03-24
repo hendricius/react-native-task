@@ -12,14 +12,18 @@ class Main extends Component {
   constructor(props){
     super(props)
     this.state = {
+      redditName:undefined,
       cards: []
     }
   }
   componentDidMount() {
     fetch('https://www.reddit.com/r/aww.json').then(response => response.json()).then(
       response => {
+        let elements = response.data.children
+        elements.splice(0, 1);
         this.setState({
-          cards:response.data.children
+          redditName:elements[0].data.subreddit_name_prefixed,
+          cards:elements
         })
       },
       error => {
@@ -34,7 +38,7 @@ class Main extends Component {
     data.approved = false
   }
   goToSecondView(){
-    this.props.navigator.push({id:'SecondView', elements:this.state.cards})
+    this.props.navigator.push({id:'SecondView', elements:this.state.cards, title:this.state.redditName})
   }
   render(){
     return (
@@ -43,7 +47,8 @@ class Main extends Component {
           rightIcon={{
             icon:'ios-arrow-dropright-circle-outline',
             onPress:this.goToSecondView.bind(this)
-          }}/>
+          }}
+          title={this.state.redditName}/>
         <SwipeCards
           cards={this.state.cards}
           renderCard={(cardData) => <Card {...cardData} />}

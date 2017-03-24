@@ -21,13 +21,15 @@ class SecondView extends Component {
     this.props.navigator.pop()
   }
   render(){
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <TopBar
           leftIcon={{
             icon:'ios-arrow-dropleft-circle-outline',
             onPress:this.goToMainView.bind(this)
-          }}/>
+          }}
+          title={this.props.title}/>
         <View style={styles.listView}>
           <ListView
             dataSource={this.state.dataSource}

@@ -15,7 +15,7 @@ class NavigatorApp extends Component {
       case 'Main':
         return <Main navigator={nav}/>
       case 'SecondView':
-        return <SecondView navigator={nav} elements={route.elements}/>
+        return <SecondView navigator={nav} elements={route.elements} title={route.title}/>
     }
   }
   render(){
@@ -23,7 +23,7 @@ class NavigatorApp extends Component {
       <Navigator
         initialRoute={{id:'Main'}}
         configureScene={(route)=>{
-          return Navigator.SceneConfigs.PushFromRight
+          return Navigator.SceneConfigs.FadeAndroid
         }}
         renderScene={(route, navigator)=>
           {return this.renderScene(route, navigator)}
@@ -32,7 +32,6 @@ class NavigatorApp extends Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

@@ -39,7 +39,7 @@ class TopBar extends Component {
         </View>
         <View style={styles.textContainer}>
           <View>
-            <Text style={styles.textHeader}>Tripl</Text>
+            <Text style={styles.textHeader}>{this.props.title}</Text>
           </View>
           <View>
             <Text>{this.props.user}</Text>
